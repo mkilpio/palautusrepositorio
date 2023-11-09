@@ -60,6 +60,35 @@ Register With Nonmatching Password And Password Confirmation
     Set Password Confirmation  kalle456
     Submit Register
     Register Should Fail With Message  Password and confirmation need to match
+
+Login After Successful Registration
+    Reset Application
+    Go To Register Page
+    Set Username  kalle
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Submit Register
+    Register Should Succeed
+    Go To Login Page
+    Set Username  kalle
+    Set Password  kalle123
+    Submit Credentials
+    Login Should Succeed
+
+Login After Failed Registration
+    Reset Application
+    Go To Register Page
+    Set Username  kalle
+    Set Password  kalle123
+    Set Password Confirmation  kalle456
+    Submit Register
+    Register Should Fail With Message  Password and confirmation need to match
+    Go To Login Page
+    Set Username  kalle
+    Set Password  kalle123
+    Submit Credentials
+    Login Should Fail With Message  Invalid username or password
+
     
 *** Keywords ***
 Login Should Succeed
